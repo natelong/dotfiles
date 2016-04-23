@@ -1,4 +1,16 @@
-alias ll="gls --color --group-directories-first -oghpa"
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='mac'
+fi
+
+if [[ platform == "mac" ]]; then
+    alias ll="gls --color --group-directories-first -oghpa"
+elif [[ platform == "linux" ]]; then
+    alias ll="ls --color --group-directories-first -oghpa"
+fi
 
 export PATH="$PATH:$HOME/bin"
 export PATH="/usr/local/sbin:$PATH"
