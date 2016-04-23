@@ -10,5 +10,11 @@ export PATH="$PATH:$GOPATH/bin"
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-export PS1="\W \$ "
+COLOR_LO="\[\033[0;37m\]"
+COLOR_HI="\[\033[1;30m\]"
+COLOR_FI="\[\033[0;34m\]"
+COLOR_NO="\[\033[0m\]"
 
+export PS1="
+$COLOR_LO\u$COLOR_HI@$COLOR_LO\h $COLOR_FI\w $COLOR_NO
+\$ "
