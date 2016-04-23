@@ -15,11 +15,11 @@
 [push]
 	default = simple
 [core]
-	editor = /usr/local/bin/nvim
+	editor = `which nvim`
 [color]
 	ui = true
 	diff = true
 [mergetool]
-	path = /usr/local/bin/nvim
+	path = `which nvim`
 [diff]
 	tool = vimdiff
