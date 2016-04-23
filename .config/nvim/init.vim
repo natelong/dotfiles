@@ -19,7 +19,7 @@ set incsearch          " search as characters are entered
 set hlsearch           " highlight matches
 
 set mouse=a
-set scrolloff=15
+set scrolloff=10
 
 set confirm            " prompt to close unsaved buffer changes
 
