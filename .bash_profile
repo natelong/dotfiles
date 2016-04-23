@@ -1,15 +1,20 @@
-platform='unknown'
+platform="unknown"
 unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-   platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-   platform='mac'
+if [[ $unamestr == "Linux" ]]; then
+    echo "Detected linux platform"
+    platform="linux"
+elif [[ $unamestr == "Darwin" ]]; then
+    echo "Detected osx platform"
+    platform="osx"
 fi
 
-if [[ platform == "mac" ]]; then
+if [[ $platform == "osx" ]]; then
+    echo "Using OSX dotfile settings"
     alias ll="gls --color --group-directories-first -oghpa"
-elif [[ platform == "linux" ]]; then
+elif [[ $platform == "linux" ]]; then
+    echo "Using Linux dotfile settings"
     alias ll="ls --color --group-directories-first -oghpa"
+    export PATH="$PATH:/usr/local/go/bin"
 fi
 
 export PATH="$PATH:$HOME/bin"
