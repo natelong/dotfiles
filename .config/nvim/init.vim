@@ -1,6 +1,7 @@
 colorscheme colorsbox-stbright " awesome colorscheme
 syntax enable          " enable syntax processing
-set guifont=Meslo\ LG\ S\ for\ Powerline:h11
+"set guifont=Meslo\ LG\ S\ for\ Powerline:h11
+set guifont=Source\ Code\ Pro:h12
 
 set tabstop=4          " number of visual spaces per tab
 set softtabstop=4      " number of spaces in tab when editing
@@ -22,36 +23,46 @@ set mouse=a
 set scrolloff=10
 
 set confirm            " prompt to close unsaved buffer changes
+set clipboard=unnamed
+
+set complete=.,b,u,]
+set wildmode=longest,list:longest
+
 
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
 
 let mapleader=";"
 
-nnoremap <leader>t :enew<cr>
 nnoremap <leader>l :bnext!<cr>
 nnoremap <leader>h :bprevious!<cr>
 nnoremap <leader>w :bdelete<cr>
 nnoremap <leader>r :edit!<cr>
-nnoremap <leader>s :w<cr>
 nnoremap <leader>o :Explore<cr>
 nnoremap <leader><space> :nohlsearch<cr>
 nnoremap <leader>v :r !pbpaste<cr>
 vnoremap <leader>c :w !pbcopy<cr><cr>
-nnoremap <leader>] :cnext<cr>
-nnoremap <leader>[ :cprev<cr>
-nnoremap <leader>n :new<cr>
+
+imap <Tab> <C-P>
 
 " Space opens and closes folds
 nnoremap <space> za
+vnoremap <space> zf
 
 " Move up and down visually
 nnoremap j gj
 nnoremap k gk
 
+nnoremap <leader>k <C-W><C-W>
+
 " tab indent, shift-tab unindent
 noremap <Tab> >>
 noremap <S-Tab> <<
+vnoremap <Tab> >>
+vnoremap <S-Tab> <<
+
+set splitbelow
+set splitright
 
 " Net netrw to tree style
 let g:netrw_liststyle=3
@@ -98,3 +109,4 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'MattesGroeger/vim-bookmarks'
 call vundle#end()
 filetype plugin on
+
