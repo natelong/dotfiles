@@ -17,6 +17,8 @@ elif [[ $platform == "linux" ]]; then
     export PATH="$PATH:/usr/local/go/bin"
 fi
 
+alias ss="less -R"
+
 export PATH="$PATH:$HOME/bin"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/lib:$PATH"
@@ -27,11 +29,15 @@ export PATH="$PATH:$GOPATH/bin"
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-COLOR_LO="\[\033[0;37m\]"
-COLOR_HI="\[\033[1;30m\]"
-COLOR_FI="\[\033[0;34m\]"
-COLOR_NO="\[\033[0m\]"
+COL_1="\[\033[0;37m\]"
+COL_2="\[\033[1;30m\]"
+COL_3="\[\033[0;34m\]"
+COL_N="\[\033[0m\]"
 
 export PS1="
-$COLOR_LO\u$COLOR_HI@$COLOR_LO\h $COLOR_FI\w $COLOR_NO
+$COL_1\u$COL_2@$COL_1\h $COL_3\w $COL_N \$(branch)
 \$ "
+
+export EDITOR="`which nvim`"
+
+source ~/.bash_user

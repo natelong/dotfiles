@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+
+import shutil
+import os
+import subprocess
+
+home = os.environ.get("HOME")
+
+def create_home_link(target):
+    link = os.path.join(home, target)
+
+    if os.path.isfile(link) or os.path.islink(link) or os.path.isdir(link):
+        print "%s exists. Skipping." % link
+    else:
+        os.symlink(target, link)
+
+################################################################################
+# Set up Links
+################################################################################
+
+create_home_link(".bash_profile")
+
+if not os.path.isdir(os.path.join(home, ".config")):
+    os.mkdir(os.path.join(".config"))
+
+create_home_link(".config/nvim")
+create_home_link(".gitconfig")
+create_home_link(".vim")
+
+if not os.path.isdir(os.path.join(home, "bin")):
+    os.mkdir(os.path.join(home, "bin"))
+
+for file in os.listdir("bin"):
+    create_home_link(os.path.join("bin", file))
+
+################################################################################
+# Set up email
+################################################################################
+
+name = ""
+email = ""
+
+try:
+    name = subprocess.check_output(["git", "config", "--global", "user.name"])
+except subprocess.CalledProcessError as err:
+    # only raise the error if there's a real error message. Otherwise, an error
+    # code just means that there's no value set
+    if err.output:
+        raise
+
+if not name:
+    print("What's your name?")
+    name = raw_input("> ")
+    subprocess.call(["git", "config", "--global", "user.name", name])
+
+try:
+    email = subprocess.check_output(["git", "config", "--global", "user.email"])
+except subprocess.CalledProcessError as err:
+    # only raise the error if there's a real error message. Otherwise, an error
+    # code just means that there's no value set
+    if err.output:
+        raise
+
+if not email:
+    print("What's your email?")
+    email = raw_input("> ")
+    subprocess.call(["git", "config", "--global", "user.email", email])
+
+    

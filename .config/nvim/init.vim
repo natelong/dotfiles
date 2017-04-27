@@ -1,6 +1,5 @@
 colorscheme colorsbox-stbright " awesome colorscheme
 syntax enable          " enable syntax processing
-"set guifont=Meslo\ LG\ S\ for\ Powerline:h11
 set guifont=Source\ Code\ Pro:h12
 
 set tabstop=4          " number of visual spaces per tab
@@ -28,6 +27,7 @@ set clipboard=unnamed
 set complete=.,b,u,]
 set wildmode=longest,list:longest
 
+set ff=unix
 
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
@@ -64,18 +64,6 @@ vnoremap <S-Tab> <<
 set splitbelow
 set splitright
 
-" Net netrw to tree style
-let g:netrw_liststyle=3
-
-" CtrlP Settings
-let g:ctrlp_match_window='bottom,order:ttb'
-let g:ctrlp_switch_buffer=0
-let g:ctrlp_map='<leader>p'
-let g:ctrlp_cmd='CtrlP'
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_user_command='ag %s -l --nocolor --hidden -g ""'
-let g:ctrlp_use_caching=0
-
 " Airline
 set laststatus=2
 let g:airline#extensions#tabline#enabled=1
@@ -86,13 +74,6 @@ let g:airline_right_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_left_sep = ''
 
-
-" set backup
-" set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" set backupskip=/tmp/*,/private/tmp/*
-" set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" set writebackup
-
 " Plugin config
 set nocompatible
 filetype on
@@ -100,13 +81,8 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plugin 'https://github.com/vim-airline/vim-airline.git'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'MattesGroeger/vim-bookmarks'
 call vundle#end()
 filetype plugin on
 

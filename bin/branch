@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+import subprocess
+import sys
+
+# alias branch='git status &>/dev/null && git status | grep "On branch" | cut -c 11-'
+BRANCH_PREAMBLE = "On branch "
+
+with open("/dev/null", "w") as devnull:
+    try:
+        status = subprocess.check_output(['git', 'status'], stderr = devnull)
+    except subprocess.CalledProcessError:
+        sys.exit(0)
+
+    if status.startswith(BRANCH_PREAMBLE):
+        start = len(BRANCH_PREAMBLE)
+        end = status.index("\n", start)
+        print "[" + status[start:end] + "]"
+    elif status.startswith("HEAD detached"):
+        print "[DETACHED]"
+    else:
+        sys.exit(0)
