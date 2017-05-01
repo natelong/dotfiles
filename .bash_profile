@@ -39,5 +39,3 @@ $COL_1\u$COL_2@$COL_1\h $COL_3\w $COL_N \$(branch)
 \$ "
 
 export EDITOR="`which nvim`"
-
-source ~/.bash_user
